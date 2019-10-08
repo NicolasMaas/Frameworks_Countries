@@ -1,0 +1,45 @@
+@import '@/assets/style/1-settings/colors.scss';
+
+.c-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-form__label {
+    display: flex;
+    flex-direction: column;
+
+    font-weight: 700;
+
+    margin-bottom: 24px;
+}
+
+.c-form__input {
+    border: unset;
+    background: $global-backgroundColor-darker;
+
+    padding: 16px 12px;
+    margin-top: 8px;
+
+    border-radius: 4px;
+
+    &::placeholder {
+        color: $global-textColor;
+    }
+}
+
+.c-form__input--textarea {
+    height: 256px;
+}
+
+.c-form__submit {
+    border: unset;
+    border-radius: 3px;
+
+    background-color: $global-themeColor;
+    color: $global-backgroundColor;
+    padding: 8px 12px;
+    width: 108px;
+
+    cursor: pointer;
+}
