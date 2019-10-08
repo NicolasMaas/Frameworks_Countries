@@ -1,0 +1,28 @@
+.c-nav {
+    display: flex;
+}
+
+.c-nav__title {
+    font-size: 21px;
+    line-height: 31px;
+    color: $global-themeColor;
+}
+
+.c-nav__link {
+    color: $global-textColor;
+    text-decoration: none;
+
+    opacity: 0.7;
+
+    will-change: opacity;
+    transition: 200ms ease-out;
+
+    &+& {
+        margin-left: 1rem;
+    }
+}
+
+.c-nav__link:hover,
+.c-nav__link:focus {
+    opacity: 1;
+}
