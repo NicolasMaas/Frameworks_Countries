@@ -1,38 +1,41 @@
 <template>
-    <div class="c-country">
-        <h3 class="u-flex u-align-items-center">
-            <img :src="`${ flag }`" class="c-country--data__flag" />
-            {{ name }}
-        </h3>
+    <router-link :to="`/country/${landcode}`">
+        <div class="c-country">
+            <h3 class="u-flex u-align-items-center">
+                <img :src="`${ flag }`" class="c-country--data__flag" />
+                {{ name }}
+            </h3>
 
-        <div class="u-flex">
-            <div class="c-country--data">
-                <p>
-                    <strong>Capital:</strong>
-                    <br />
-                    {{ capital }}
-                </p>
+            <div class="u-flex">
+                <div class="c-country--data">
+                    <p>
+                        <strong>Capital:</strong>
+                        <br />
+                        {{ capital }}
+                    </p>
 
-                <p>
-                    <strong>Region:</strong>
-                    <br />
-                    {{ region }}
-                </p>
+                    <p>
+                        <strong>Region:</strong>
+                        <br />
+                        {{ region }}
+                    </p>
 
-                <p>
-                    <strong>Rating:</strong>
-                    <br />
-                    {{ rating }}
-                </p>
-            </div>
-            <div class="c-country--img">
-                <img
-                    :src="`./assets/images/countries/${ landcode }.png`"
-                    class="c-country--img__country"
-                />
+                    <p>
+                        <strong>Rating:</strong>
+                        <br />
+                        {{ rating }}
+                    </p>
+                </div>
+                <div class="c-country--img">
+                    <img
+                        :src="require(`../assets/images/countries/${ landcode }.png`)"
+                        :alt="`${ name }`"
+                        class="c-country--img__country"
+                    />
+                </div>
             </div>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script>

@@ -5,12 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    countries: null
+    countries: null,
+    country: null
   },
   mutations: {
     setCountries(state, payload) {
       state.countries = payload;
-    }
+    },
+
+    setCountry(state, payload) {
+      state.country = payload;
+    },
   },
   actions: {
     getCountries: async function ({
@@ -21,6 +26,16 @@ export default new Vuex.Store({
       });
       const data = await request.json();
       commit('setCountries', data)
+    },
+
+    getCountry: async function ({
+      commit
+    }, code) {
+      const request = await fetch(`https://restcountries.eu/rest/v2/alpha?codes=${code}`, {
+        method: 'GET'
+      });
+      const data = await request.json();
+      commit('setCountry', data)
     }
   }
 })
