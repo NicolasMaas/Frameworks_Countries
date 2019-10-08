@@ -1,0 +1,39 @@
+@import '@/assets/style/1-settings/colors.scss';
+
+.c-country {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+.c-country--data {
+    width: 40%;
+}
+
+.c-country--data__flag {
+    width: 32px;
+    height: 24px;
+    object-fit: cover;
+    margin-right: 16px;
+    border-radius: 4px;
+}
+
+.c-country--img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 60%;
+    height: 100%;
+}
+
+
+.c-country--img__country {
+    width: 100%;
+    height: auto;
+}

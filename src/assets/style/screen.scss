@@ -8,6 +8,7 @@
 
 // 4. Elements
 @import './4-elements/page.scss';
+@import './4-elements/headers.scss';
 
 // 5. Objects
 @import './5-objects/row.scss';
@@ -18,3 +19,5 @@
 
 // 7. Utilities
 @import './7-utilities/flex.scss';
+@import './7-utilities/text-align.scss';
+@import './7-utilities/max-width.scss';

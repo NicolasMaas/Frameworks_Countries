@@ -6,13 +6,17 @@
 
                 <nav class="c-nav">
                     <router-link class="c-nav__link" to="/">Home</router-link>
-                    <router-link class="c-nav__link" to="/settings">Settings</router-link>
+                    <router-link class="c-nav__link" to="/about">About</router-link>
                 </nav>
             </div>
         </div>
         <router-view />
     </div>
 </template>
+
+<script>
+export default {};
+</script>
 
 <style lang="scss">
 @import "@/assets/style/screen.scss";
