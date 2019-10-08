@@ -97,36 +97,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/style/6-components/forms.scss";
-
-.c-review {
-    display: flex;
-    flex-direction: column;
-
-    @media (min-width: 900px) {
-        flex-direction: row;
-    }
-}
-
-.c-review--form,
-.c-review--map {
-    width: 100%;
-}
-
-.c-review__flag {
-    display: block;
-    width: auto;
-    height: 32px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.c-review__countryimg {
-    display: block;
-
-    width: 100%;
-    height: auto;
-
-    padding: 16px 32px;
-    box-sizing: border-box;
-}
+@import "@/assets/style/6-components/reviews.scss";
 </style>
