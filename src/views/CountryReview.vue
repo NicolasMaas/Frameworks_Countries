@@ -11,7 +11,10 @@
 
                     <h3>What others think about visiting {{ country.name }}</h3>
 
-                    <p v-for="review in reviews" :key="review.title">{{ review.msg }}</p>
+                    <div v-for="review in reviews" :key="review.title">
+                        <h4>{{ review.title }}</h4>
+                        <span>{{ review.msg }}</span>
+                    </div>
 
                     <h2>Share your thoughts</h2>
                     <h4>Reviews:</h4>
@@ -111,9 +114,7 @@ export default {
 
         getReviews() {
             if (localStorage.getItem(this.countryId)) {
-                this.reviews.push(
-                    JSON.parse(localStorage.getItem(this.countryId))
-                );
+                this.reviews = JSON.parse(localStorage.getItem(this.countryId));
 
                 console.log(this.reviews, null, 4);
             } else {
@@ -128,12 +129,22 @@ export default {
             };
 
             if (localStorage.getItem(this.countryId)) {
-                this.reviews.push(JSON.stringify(r));
+                this.reviews.push(r);
 
-                localStorage.setItem(this.countryId, this.reviews);
+                localStorage.setItem(
+                    this.countryId,
+                    JSON.stringify(this.reviews)
+                );
             } else {
-                localStorage.setItem(this.countryId, JSON.stringify(r));
+                this.reviews.push(r);
+                localStorage.setItem(
+                    this.countryId,
+                    JSON.stringify(this.reviews)
+                );
             }
+
+            this.reviewTitle = "";
+            this.reviewMsg = "";
         }
     }
 };
