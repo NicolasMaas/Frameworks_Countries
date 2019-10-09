@@ -26,6 +26,11 @@
     &::placeholder {
         color: $global-textColor;
     }
+
+    &:active,
+    &:focus {
+        outline: 1px solid $global-borderColor;
+    }
 }
 
 .c-form__input--textarea {

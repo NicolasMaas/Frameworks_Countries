@@ -8,11 +8,15 @@
                         <span class="u-text-italic">({{ country.nativeName }})</span>
                     </h1>
                     <h2>Review</h2>
+
                     <h3>What others think about visiting {{ country.name }}</h3>
+
+                    <p v-for="review in reviews" :key="review.title">{{ review.msg }}</p>
+
                     <h2>Share your thoughts</h2>
                     <h4>Reviews:</h4>
 
-                    <form class="c-form">
+                    <form method="POST" class="c-form">
                         <label for="title" class="c-form__label">
                             Title of the review
                             <input
@@ -20,6 +24,7 @@
                                 name="title"
                                 id="title"
                                 placeholder="Title your review"
+                                v-model="reviewTitle"
                                 class="c-form__input"
                             />
                         </label>
@@ -30,13 +35,19 @@
                                 name="experience"
                                 id="experience"
                                 placeholder="Give a concise review"
+                                v-model="reviewMsg"
                                 class="c-form__input c-form__input--textarea"
                             ></textarea>
                         </label>
 
                         <label class="c-form__label">Rating</label>
 
-                        <input type="submit" value="Post review" class="c-form__submit" />
+                        <input
+                            type="submit"
+                            value="Post review"
+                            class="c-form__submit"
+                            @click.stop.prevent="postRequest()"
+                        />
                     </form>
                 </div>
             </div>
@@ -71,7 +82,12 @@ export default {
 
     data() {
         return {
-            country: ""
+            country: "",
+            countryId: "",
+
+            reviews: [],
+            reviewTitle: "",
+            reviewMsg: ""
         };
     },
 
@@ -89,7 +105,35 @@ export default {
             );
             const data = await request.json();
             this.country = data[0];
-            console.log(JSON.stringify(this.country, null, 4));
+            this.countryId = data[0].alpha2Code;
+            this.getReviews();
+        },
+
+        getReviews() {
+            if (localStorage.getItem(this.countryId)) {
+                this.reviews.push(
+                    JSON.parse(localStorage.getItem(this.countryId))
+                );
+
+                console.log(this.reviews, null, 4);
+            } else {
+                console.log("No storage found");
+            }
+        },
+
+        postRequest() {
+            let r = {
+                title: this.reviewTitle,
+                msg: this.reviewMsg
+            };
+
+            if (localStorage.getItem(this.countryId)) {
+                this.reviews.push(JSON.stringify(r));
+
+                localStorage.setItem(this.countryId, this.reviews);
+            } else {
+                localStorage.setItem(this.countryId, JSON.stringify(r));
+            }
         }
     }
 };
