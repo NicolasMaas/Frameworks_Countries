@@ -23,7 +23,12 @@
                     <p>
                         <strong>Rating:</strong>
                         <br />
-                        {{ rating }}
+                        <star-rating
+                            :rating="rating"
+                            :star-size="16"
+                            :read-only="true"
+                            :show-rating="false"
+                        ></star-rating>
                     </p>
                 </div>
                 <div class="c-country--img">
@@ -39,6 +44,8 @@
 </template>
 
 <script>
+import StarRating from "vue-star-rating";
+
 export default {
     name: "Country",
 
@@ -49,6 +56,10 @@ export default {
         rating: Number,
         flag: String,
         landcode: String
+    },
+
+    components: {
+        StarRating
     }
 };
 </script>

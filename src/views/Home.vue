@@ -26,6 +26,7 @@
                         :region="country.region"
                         :flag="country.flag"
                         :landcode="country.alpha2Code"
+                        :rating="country.rating"
                     />
                 </div>
             </div>
